@@ -1,28 +1,21 @@
 package histogram;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Histogram <T>{
-    private final T[] array;
+    private final Map<T, Integer> map = new HashMap<>();
 
-    public Histogram(T[] array) {
-        this.array = array;
+    public Integer get(Object key) {
+        return map.get(key);
     }
 
-    public T[] getArray() {
-        return array;
+    public Set<T> keySet() {
+        return map.keySet();
     }
     
-    public HashMap<T, Integer> getHistogram(){
-        HashMap<T, Integer> histogram = new HashMap<>();
-        
-        for (int i = 0; i < array.length; i++) {
-            if(!histogram.containsKey(array[i])){
-                histogram.put(array[i], 0);
-            }
-            histogram.put(array[i], histogram.get(array[i])+1);
-        }
-        
-        return histogram;
+    public Integer increase(T key){
+        return map.put(key, map.containsKey(key)? map.get(key)+1 : 1);
     }
 }

@@ -6,8 +6,15 @@ public class Main {
         Integer[] array = {1,1,1,2,3,4,8,5,5,3,2,1,5,6,4,7,8,9,6,2};
         String[] sArray = {"Ana", "Juan", "Pedro", "Ana", "Pedro"};
         
-        Histogram histogram = new Histogram(sArray);
+        Histogram<Integer> histogram = HistogramCalculator.histCaculate(array);
+        Histogram<String> histogram1 = HistogramCalculator.histCaculate(sArray);
         
-        System.out.println(histogram.getHistogram());
+        for (Object key : histogram.keySet()) {
+            System.out.println("Key: " + key + " -> " + histogram.get(key));
+        }
+        
+        for (Object key : histogram1.keySet()) {
+            System.out.println("Key: " + key + " -> " + histogram1.get(key));
+        }
     }
 }
